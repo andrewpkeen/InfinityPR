@@ -1,0 +1,2 @@
+# InfinityPR
+Infinity Power Rankings
