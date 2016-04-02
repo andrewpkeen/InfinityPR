@@ -10,4 +10,5 @@ class NFL
   end
 end
 
-p NFL.get_reg_games(2015, 1).parsed_response['ss']['gms']
+games = NFL.get_reg_games(2015, 1).parsed_response['ss']['gms']['g']
+#date = Date.parse(games[0].)
