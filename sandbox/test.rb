@@ -11,4 +11,5 @@ class NFL
 end
 
 games = NFL.get_reg_games(2015, 1).parsed_response['ss']['gms']['g']
-#date = Date.parse(games[0].)
+date = Date.parse(games[0]['eid'][0,8])
+puts date
