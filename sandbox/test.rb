@@ -1,4 +1,5 @@
-require 'httparty'
+
+require_relative '../config/environment'
 
 class NFL
   include HTTParty
@@ -10,6 +11,16 @@ class NFL
   end
 end
 
-games = NFL.get_reg_games(2015, 1).parsed_response['ss']['gms']['g']
-date = Date.parse(games[0]['eid'][0,8])
-puts date
+games_data = NFL.get_reg_games(2015, 1)['ss']['gms']['g']
+
+games_data.each do |dat|
+  game = Game.new
+  game.date = Date.parse(dat['eid'][0,8])
+  game.home_team = dat['h']
+  game.away_team = dat['v']
+  game.home_score = dat['hs']
+  game.away_score = dat['vs']
+  game.season_year = 2015
+  game.week = 1
+  p game
+end
